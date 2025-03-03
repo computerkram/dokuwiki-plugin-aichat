@@ -62,6 +62,7 @@ class action_plugin_aichat extends ActionPlugin
                 $sources[$source->getPage()] = [
                     'page' => $source->getPage(),
                     'url' => wl($source->getPage()),
+                    'namespace' => ucwords(str_replace(['_', '-'], ' ', getNS($source->getPage()))),
                     'title' => p_get_first_heading($source->getPage()) ?: $source->getPage(),
                     'score' => sprintf("%.2f%%", $source->getScore() * 100),
                 ];
