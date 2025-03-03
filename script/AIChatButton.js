@@ -39,6 +39,10 @@ class AIChatButton extends HTMLElement {
         this.#dialog.querySelector('button.fs').addEventListener('click', function() {
             this.#dialog.classList.toggle('fullscreen');
         }.bind(this));
+        
+        if (localStorage.getItem('chatClosed') !== 'true') {
+            this.#dialog.show();
+        }
     }
 
     /**
@@ -91,6 +95,7 @@ class AIChatButton extends HTMLElement {
             button.start svg {
                 width: var(--icon-size);
                 height: var(--icon-size);
+                padding-right: 150px;
             }
             dialog {
                 width: 500px;
@@ -141,8 +146,17 @@ class AIChatButton extends HTMLElement {
     toggleDialog() {
         if (this.#dialog.open) {
             this.#dialog.close();
+            localStorage.setItem('chatClosed', 'true');
         } else {
             this.#dialog.show();
+            localStorage.removeItem('chatClosed');
+            // Warte 1ms, dann scrolle nach unten
+            setTimeout(() => {
+                const chatMain = document.querySelector('aichat-button')?.shadowRoot?.querySelector('dialog > div > main');
+                if (chatMain) {
+                    chatMain.scrollTop = chatMain.scrollHeight;
+                }
+            }, 1);
         }
     }
 }
