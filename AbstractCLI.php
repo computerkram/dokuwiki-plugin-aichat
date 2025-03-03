@@ -38,7 +38,7 @@ abstract class AbstractCLI extends CLIPlugin
     /** @inheritDoc */
     protected function main(Options $options)
     {
-        if ($this->loglevel['debug']['enabled']) {
+        if (($this->loglevel['debug']['enabled'] ?? false)) {
             $this->helper->factory->setDebug(true);
         }
 
