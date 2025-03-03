@@ -311,9 +311,12 @@ class Embeddings
 
         // the page itself
         $title = p_get_first_heading($id);
+        $namespace = getNS($id);
         $page = noNS($id);
-        $crumbs[] = $title ? "$title ($page)" : $page;
-
+        //$crumbs[] = $title ? "$title ($page)" : $page;
+        // Kombiniere Namespace und Seitennamen
+        $fullPage = $namespace ? "$page ($namespace)" : $page;
+        $crumbs[] = $title ? "$title ($namespace)" : $fullPage;
         return implode(' » ', $crumbs);
     }
 
