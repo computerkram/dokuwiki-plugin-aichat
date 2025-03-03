@@ -288,7 +288,7 @@ class AIChatChat extends HTMLElement {
             }
         }, 1);
     }
-    
+
     /**
      * Display a message in the chat
      *
