@@ -5,7 +5,7 @@
  * @author Andreas Gohr <gohr@cosmocode.de>
  */
 
-$lang['title'] = 'KI Chat';
+$lang['title'] = 'ziKI - AI Chat';
 $lang['hello'] = 'Hallo, wie kann ich Ihnen helfen?';
 $lang['placeholder'] = 'Ihre Frage…';
 $lang['restricted'] = 'Entschuldigung, der KI-Chat wurde für Sie nicht aktiviert.';
