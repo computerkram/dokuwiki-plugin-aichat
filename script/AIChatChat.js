@@ -198,6 +198,7 @@ class AIChatChat extends HTMLElement {
                 this.displayMessage(row[1], row[2]);
             });
         }
+        this.scrollToBottom(); // Chatfenster nach unten scrollen
     }
 
     deleteHistory() {
@@ -273,6 +274,22 @@ class AIChatChat extends HTMLElement {
     }
 
     /**
+     * Scrolls the chat window to the bottom.
+     *
+     * Ensures that the latest messages are always visible, even when content is dynamically added.
+     * Uses requestAnimationFrame to wait until new elements are fully rendered.
+     */
+    scrollToBottom() {
+        // Warte 1ms, dann scrolle nach unten
+        setTimeout(() => {
+            const chatMain = document.querySelector('aichat-button')?.shadowRoot?.querySelector('dialog > div > main');
+            if (chatMain) {
+                chatMain.scrollTop = chatMain.scrollHeight;
+            }
+        }, 1);
+    }
+    
+    /**
      * Display a message in the chat
      *
      * @param {string} message
@@ -295,8 +312,10 @@ class AIChatChat extends HTMLElement {
                 const li = document.createElement('li');
                 const a = document.createElement('a');
                 a.href = source.url;
-                a.textContent = source.title;
+                //a.textContent = source.title;
+                a.textContent = `${source.title} (${source.namespace})`;
                 a.title = `${source.page} (${source.score})`;
+                //a.target = "_blank"; // Link in neuem Tab öffnen
                 li.appendChild(a);
                 ul.appendChild(li);
             });
@@ -304,6 +323,7 @@ class AIChatChat extends HTMLElement {
         }
 
         this.#output.appendChild(div);
+        this.scrollToBottom(); // Immer nach unten scrollen, wenn eine neue Nachricht kommt
         return div;
     }
 
