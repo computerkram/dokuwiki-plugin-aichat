@@ -75,7 +75,7 @@ class AIChatButton extends HTMLElement {
         const style = document.createElement('style');
         style.textContent = `
             :host {
-                --color-chat-icon: #4881bf;
+                --color-chat-icon: #ca138b;
                 --color-link: #4881bf;
                 --icon-size: 2em;
             }
