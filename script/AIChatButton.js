@@ -39,7 +39,10 @@ class AIChatButton extends HTMLElement {
         this.#dialog.querySelector('button.fs').addEventListener('click', function() {
             this.#dialog.classList.toggle('fullscreen');
         }.bind(this));
-        
+        // init set chatClosed = true
+        if (localStorage.getItem('chatClosed') === null) {
+            localStorage.setItem('chatClosed', 'true'); 
+        }
         if (localStorage.getItem('chatClosed') !== 'true') {
             this.#dialog.show();
         }
@@ -149,7 +152,7 @@ class AIChatButton extends HTMLElement {
             localStorage.setItem('chatClosed', 'true');
         } else {
             this.#dialog.show();
-            localStorage.removeItem('chatClosed');
+            localStorage.setItem('chatClosed', 'false');
             // Warte 1ms, dann scrolle nach unten
             setTimeout(() => {
                 const chatMain = document.querySelector('aichat-button')?.shadowRoot?.querySelector('dialog > div > main');
