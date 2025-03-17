@@ -218,6 +218,7 @@ class SQLiteStorage extends AbstractStorage
     {
         $dotProduct = 0;
         foreach ($queryVector as $key => $value) {
+            if(!isset($embedding[$key])) break; // if the vector is shorter than the query, stop.
             $dotProduct += $value * $embedding[$key];
         }
         return $dotProduct;
@@ -310,7 +311,7 @@ class SQLiteStorage extends AbstractStorage
             if ($this->logger) $this->logger->success('Created {clusters} clusters', ['clusters' => count($clusters)]);
         } catch (\Exception $e) {
             $this->db->getPdo()->rollBack();
-            throw new \RuntimeException('Clustering failed: ' . $e->getMessage(), 0, $e);
+            throw new \RuntimeException('Clustering failed: ' . $e->getMessage(), 4005, $e);
         }
     }
 
