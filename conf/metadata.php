@@ -66,3 +66,5 @@ $meta['preferUIlanguage'] = array('multichoice', '_choices' => array(
     \dokuwiki\plugin\aichat\AIChat::LANG_UI_ALL,
     \dokuwiki\plugin\aichat\AIChat::LANG_UI_LIMITED,
 ));
+
+$meta['noanswerSuffix'] = array('string');
