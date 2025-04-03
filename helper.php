@@ -205,8 +205,10 @@ class helper_plugin_aichat extends Plugin
                 'customprompt' => $this->getConf('customprompt'),
             ]);
         } else {
+            $noanswerSuffix = $this->getConf('noanswerSuffix');
             $prompt = $this->getPrompt('noanswer', [
                 'question' => $question,
+                 'animalsuffiy' => $noanswerSuffix,                      
             ]);
             $history = [];
         }
