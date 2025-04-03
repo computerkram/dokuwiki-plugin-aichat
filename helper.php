@@ -208,7 +208,7 @@ class helper_plugin_aichat extends Plugin
             $noanswerSuffix = $this->getConf('noanswerSuffix');
             $prompt = $this->getPrompt('noanswer', [
                 'question' => $question,
-                 'animalsuffiy' => $noanswerSuffix,                      
+                 'animalsuffix' => $noanswerSuffix,                      
             ]);
             $history = [];
         }
