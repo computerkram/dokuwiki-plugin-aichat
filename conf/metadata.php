@@ -68,3 +68,4 @@ $meta['preferUIlanguage'] = array('multichoice', '_choices' => array(
 ));
 
 $meta['noanswerSuffix'] = array('string');
+$meta['chatTitle'] = array('string');
