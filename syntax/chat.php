@@ -71,8 +71,9 @@ class syntax_plugin_aichat_chat extends SyntaxPlugin
         $html = '<aichat-chat ' . buildAttributes($opts) . '></aichat-chat>';
 
         if (in_array('button', $data['params'])) {
+            $chatTitle = $this->getConf('chatTitle'); 
             $opts = [
-                'label' => $this->getLang('title'),
+                'label' => $chatTitle,
                 'title-close' => $this->getLang('close-button'),
                 'title-fullscreen' => $this->getLang('fullscreen-button'),
             ];
