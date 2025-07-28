@@ -313,7 +313,9 @@ class AIChatChat extends HTMLElement {
                 const a = document.createElement('a');
                 a.href = source.url;
                 //a.textContent = source.title;
-                a.textContent = `${source.title} (${source.namespace})`;
+                 // Namespace nur anzeigen, wenn vorhanden
+                const namespacePart = source.namespace ? ` (${source.namespace})` : '';
+                a.textContent = `${source.title}${namespacePart}`;
                 a.title = `${source.page} (${source.score})`;
                 //a.target = "_blank"; // Link in neuem Tab öffnen
                 li.appendChild(a);
